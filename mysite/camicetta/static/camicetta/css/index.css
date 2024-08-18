@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+.widgets {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.widgets a {
+  display: flex;
+  justify-content: center;
+}
+.widgets a img:hover {
+  transition: 0.5s;
+  filter: opacity(70%);
+}
+.widgets section {
+  display: flex;
+  justify-content: center;
+}
+.widgets section article .widget2 {
+  align-items: flex-start;
+}
+.widgets section article .widget3 {
+  align-items: flex-end;
+}
+.widgets section article p {
+  font-size: 22px;
+}
+.widgets section article a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  
+}
+
+.main {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.main a {
+  text-decoration: none;
+  color: black;
+}
+.main a article {
+  text-align: center;
+  margin: 0 30px;
+}
+.main a article:hover {
+  filter: opacity(70%);
+}
+.main a article:hover img {
+  transition: 0.5s;
+  transform: scale(1.2);
+}
+.main a article img {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.main a article p {
+  font-size: 15px;
+}
+
+.opacity:hover {
+  transition: 0.5s;
+  filter: opacity(70%);
+}/*# sourceMappingURL=index.css.map */

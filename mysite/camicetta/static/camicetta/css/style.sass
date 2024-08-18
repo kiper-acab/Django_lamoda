@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap')
+    
+    
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: jost
+
+.page
+    overflow: hidden
+    display: flex
+    flex-direction: column  
+    min-height: 100vh
+
+header 
+    display: flex
+    justify-content: space-between
+    article
+        margin: 0 50px
+        display: flex
+        align-items: center
+        padding: 10px 0
+
+        img
+            height: 40px
+    
+        a   
+            margin: 0 20px
+            text-decoration: none
+            color: white
+            
+
+        .auth
+            background-color: #0d0b15
+            padding: 6px 30px
+            border-radius: 7%
+            
+        .login
+            border: solid 1px black
+            padding: 6px 30px
+            border-radius: 5%
+            color: black
+            
+
+
+.footer
+    margin-top: auto 
+    display: flex
+    justify-content: center 
+    background-color: rgb(28, 28, 30)
+
+    
+
+    article
+        margin: 50px 150px 
+        display: flex
+        flex-direction: column
+
+        h2, h1
+            margin-bottom: 50px
+            color: white
+        
+        a 
+            text-decoration: none
+            color: white
+            margin: 10px 0
+
+            &:hover
+                transition: .3s
+                color: #6d6d6d
+
+        figure
+            display: flex
+            flex-direction: row
+
+            input
+                outline: none !important
+                background: none
+                border: none
+                color: white 
+                width: 200px
+                height: 40px
+                margin: 0 10px  
+            
+            button
+                background: none
+                padding: 5px 20px
+                color: white
+                border-radius: 5%
+
+        hr
+            color: #6c6c6c
+            max-width: 200px
+
+            
+
+
+.opacity
+    &:hover
+        transition: .5s
+        filter: opacity(70%)

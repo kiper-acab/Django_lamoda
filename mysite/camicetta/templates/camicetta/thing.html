@@ -1,0 +1,52 @@
+{% extends 'camicetta/base.html' %} 
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'camicetta/css/thing.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <article>
+            <img src="{{ thing.image.url }}" alt="">
+        </article>
+        <article>
+            <h1>Модель: <b>{{ thing.name.capitalize }}</b></h1>
+            <h2>Брэнд: {{ thing.brand }}</h2> 
+            
+            {% if thing.discount != 0 %}
+                <figure>
+                    <p><b>Цена: </b></p>
+                    <p class="discount"><b>{{ thing.discount }}₽</b></p>
+                    <p class="price price-discount"><s>{{ thing.price }}</s></p>
+                    
+                </figure>
+            {% else %}
+                <figure>
+                    <p><b>Цена:</b></p>
+                    <p class="price" style="color: #cd5500;">{{ thing.price }} ₽</p>
+                </figure>
+            {% endif %}
+            <hr>
+            <h3>Размеры в наличии:</h3>
+
+            {% if thing_sizes == None %}
+                <article>
+                    <p style="width: 200px;">Нет в наличии размеров</p>
+                </article>
+            {% else %}
+                <article>
+                    {% for size in thing_sizes %}
+                        <button>{{ size }}</button>              
+                    {% endfor %}
+                </article>
+                <button class="basket">Добавить в корзину</button>
+            {% endif %}
+        </article>
+    </section>
+{% endblock %}
+

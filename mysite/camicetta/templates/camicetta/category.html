@@ -1,0 +1,36 @@
+{% extends 'camicetta/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'camicetta/css/category.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="cards">
+            {% for thing in things %}
+            <a href="/thing/{{ thing.thing_slug }}" class="opacity">
+                <article>
+                    <img src="{{ thing.image.url }}" alt="">
+                    {% if thing.discount != 0 %}
+                        <figure>
+                            <p class="price price-discount"><s>{{ thing.price }}</s></p>
+                            <p class="discount"><b>{{ thing.discount }}₽ </b></p>
+                        </figure>
+                    {% else %}
+                        <figure>
+                            <p class="price">{{ thing.price }} ₽</p>
+                        </figure>
+                        
+                    {% endif %}
+                    <hr>
+                    <p class="title">{{ thing.brand }} {{ thing.name }}</p>
+                </article>
+            </a>
+            {% endfor %}
+        </section>
+    </section>
+{% endblock %}

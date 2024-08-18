@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+.cards {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+  gap: 50px;
+  margin-top: 100px;
+  margin-bottom: 200px;
+}
+.cards a {
+  text-decoration: none;
+  color: black;
+  border: solid 1px #2b2b2b;
+  border-radius: 3%;
+  padding: 40px 10px;
+  display: flex;
+  justify-content: center;
+}
+.cards a:hover {
+  transition: 0.5s;
+  filter: opacity(70%);
+}
+.cards a:hover hr {
+  transform: scale(0.7);
+  transition: 0.5s;
+}
+.cards a article {
+  width: 200px;
+}
+.cards a article img {
+  height: 200px;
+  width: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.cards a article p {
+  font-family: Karla;
+  font-size: 12px;
+}
+.cards a article .title {
+  margin-top: 20px;
+}
+.cards a article figure {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.cards a article figure p {
+  margin: 0 10px;
+  font-size: 16px;
+}
+.cards a article figure .discount {
+  color: #c24412;
+}
+.cards a article .title {
+  text-align: center;
+}
+.cards a article hr {
+  margin-top: 20px;
+}/*# sourceMappingURL=category.css.map */

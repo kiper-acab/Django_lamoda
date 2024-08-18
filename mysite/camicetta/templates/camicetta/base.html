@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'camicetta/images/logo.png' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'camicetta/css/style.css' %}">
+    {% block links %} 
+    {% endblock %}
+</head>
+<body>
+    <div class="page">
+        <header>
+            <article class="opacity">
+                <a href="{% url 'main' %}">
+                    <img src="{% static 'camicetta/images/logo.png' %}" alt="">
+                </a>
+            </article>
+        
+            <article>
+                <a href="{% url 'login' %}" class="login">Вход</a>
+                <a href="{% url 'register' %}" class="auth">Регистрация</a>
+            </article>
+        </header>
+        {% block content %}
+        
+        {% endblock %}
+        <section class="footer">
+            <article>
+                <h1>СКИДКА 10% за подписку<br> на новинки и акции</h1>
+                <figure>
+                    <input type="text" placeholder="Email">
+                    <button class="opacity">Подписаться</button>
+                </figure>
+                <hr>
+                <a href="#" class="act">Условия акции</a>
+            </article>
+            <article>
+                <h2>Помощь</h2>
+                <a href="#">статусы заказа по номеру</a>
+                <a href="#">Мои заказы</a>
+                <a href="#">Условия доставки</a>
+                <a href="#">Магазины Lamoda Sport</a>
+                <a href="#">Возврат</a>
+                <a href="#">Как оформить заказ</a>
+            </article>
+            <article>
+                <h2>О нас</h2>
+                <a href="#">Журнал</a>
+                <a href="#">Участие в исследованиях</a>
+                <a href="#">Вакансии</a>
+                <a href="#">Устойчивое развитие</a>
+                <a href="#">Публичная офера</a>
+            </article>
+        </section>
+    </div>
+    
+</body>
+</html>

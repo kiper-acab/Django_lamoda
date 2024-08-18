@@ -1,0 +1,51 @@
+{% extends 'camicetta/base.html' %}
+{% load static %}
+
+{% block title %} {{ title }}{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'camicetta/css/index.css' %}">
+{% endblock %}
+
+    
+{% block content %}
+    <section class="widgets">
+        <a href="" class="opacity"><img src="{% static 'camicetta/images/Screenshot_1.png' %}" alt=""></a>
+        <section>
+            <article class="opacity widget2">
+                <a href="">
+                    <img src="{% static 'camicetta/images/widget1.png' %}" alt="">
+                    <p>Ограниченное время</p>
+                </a>
+            </article>
+            <article>
+                <article class="opacity widget2">
+                    <a href="">
+                        <img src="{% static 'camicetta/images/widget2.png' %}" alt="">
+                        <p>Скидки до 30%</p>
+                    </a>    
+                    
+                </article>
+                <article class="opacity widget3">
+                    <a href="">
+                        <img src="{% static 'camicetta/images/widget3.png' %}" alt="">
+                        <p>Еще больше скидок</p>
+                    </a>
+                </article>
+                
+            </article>
+        </section>
+    </section>
+    <section class="main" style='margin-bottom: 200px;'>
+        {% for category in categories %}
+            <a href="category/{{ category.slug }}">
+                <article>
+                    {% if category.photo %}
+                    <img src="{{ category.photo.url }}" alt="">
+                    <p>{{ category.name }}</p>
+                    {% endif %}
+                </article>
+            </a>
+        {% endfor %}
+    </section>
+    
+{% endblock %}

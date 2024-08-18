@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: jost;
+}
+
+.page {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+header article {
+  margin: 0 50px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+header article img {
+  height: 40px;
+}
+header article a {
+  margin: 0 20px;
+  text-decoration: none;
+  color: white;
+}
+header article .auth {
+  background-color: #0d0b15;
+  padding: 6px 30px;
+  border-radius: 7%;
+}
+header article .login {
+  border: solid 1px black;
+  padding: 6px 30px;
+  border-radius: 5%;
+  color: black;
+}
+
+.footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(28, 28, 30);
+}
+.footer article {
+  margin: 50px 150px;
+  display: flex;
+  flex-direction: column;
+}
+.footer article h2, .footer article h1 {
+  margin-bottom: 50px;
+  color: white;
+}
+.footer article a {
+  text-decoration: none;
+  color: white;
+  margin: 10px 0;
+}
+.footer article a:hover {
+  transition: 0.3s;
+  color: #6d6d6d;
+}
+.footer article figure {
+  display: flex;
+  flex-direction: row;
+}
+.footer article figure input {
+  outline: none !important;
+  background: none;
+  border: none;
+  color: white;
+  width: 200px;
+  height: 40px;
+  margin: 0 10px;
+}
+.footer article figure button {
+  background: none;
+  padding: 5px 20px;
+  color: white;
+  border-radius: 5%;
+}
+.footer article hr {
+  color: #6c6c6c;
+  max-width: 200px;
+}
+
+.opacity:hover {
+  transition: 0.5s;
+  filter: opacity(70%);
+}/*# sourceMappingURL=style.css.map */
