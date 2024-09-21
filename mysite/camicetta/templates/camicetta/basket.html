@@ -1,0 +1,92 @@
+{% extends 'camicetta/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'camicetta/css/basket.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Корзина заказов</h1>
+    {% if basket %}
+        <figure>
+            <a href="{% url 'clean_basket' %}" class="clean">Отчистить корзину</a>
+        </figure>
+        <section class="cards">
+            {% for el in basket %}
+                    <article>
+                        <img src="{{ el.thing.image.url }}" alt="">
+                        {% if el.thing.discount != 0 %}
+                            <figure>
+                                <p class="price price-discount"><s>{{ el.thing.price }}</s></p>
+                                <p class="discount"><b>{{ el.thing.discount }}₽ </b></p>
+                            </figure>
+                        {% else %}
+                            <figure>
+                                <p class="price">{{ el.thing.price }} ₽</p>
+                            </figure>
+                            
+                        {% endif %}
+                        <figure class="info">
+                            <p class="title">{{ el.thing.brand }} {{ el.thing.name }}</p>
+                            <p class='size'>Размер: {{ el.size }}</p>
+                        </figure>   
+                        <figure class="quantity" >  
+                            <p> 
+                                <a href="#" class="quantity-button" data-id="{{ el.id }}" data-action="decrease">–</a>
+                                <span id="quantity-{{ el.id }}">{{ el.quantity }}</span>
+                                <a href="#" class="quantity-button" data-id="{{ el.id }}" data-action="increase">+</a>
+                            </p>
+                        </figure>      
+
+                    <a href="/thing/{{ el.thing.thing_slug }}" class="to_thing">Перейти к товару</a>
+                    </article> 
+            {% endfor %}
+        </section>
+        <section class="formalization">
+            {% if basket_len == 1 %}
+                <a href="{% url 'formalization' %}">Оформление товара</a>
+            {% elif basket_len > 1 %}
+                <a href="{% url 'formalization' %}">Оформление товаров</a>
+            {% endif %}
+        </section>
+    {% else %}    
+        <h2 class="null">На данный момент корзина пуста</h2>
+    {% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const quantityButtons = document.querySelectorAll('.quantity-button');
+        
+            quantityButtons.forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const basketId = this.getAttribute('data-id');
+                    const action = this.getAttribute('data-action');
+        
+                    fetch(`/basket/update/${basketId}/${action}/`, {
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.reload();  // Перезагрузка страницы после обновления количества
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                });
+            });
+        });
+
+    </script>
+        
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'camicetta/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'camicetta/css/formalization.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button>Перейти к оплате</button>
+        </form>
+        
+    </section>
+{% endblock %}

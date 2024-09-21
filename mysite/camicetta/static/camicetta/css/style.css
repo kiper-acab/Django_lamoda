@@ -30,17 +30,62 @@ header article a {
   margin: 0 20px;
   text-decoration: none;
   color: white;
+  margin: 0 20px;
+}
+header article a i {
+  color: black;
+}
+header article a b {
+  color: #e97100;
 }
 header article .auth {
   background-color: #0d0b15;
   padding: 6px 30px;
   border-radius: 7%;
+  color: white;
 }
 header article .login {
   border: solid 1px black;
   padding: 6px 30px;
   border-radius: 5%;
   color: black;
+}
+header article .basket {
+  margin-right: 50px;
+  color: black;
+}
+header article .basket i {
+  margin-right: 10px;
+}
+header .dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  background: none;
+}
+header .dropdown {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+}
+header .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(28, 28, 30);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+header .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: white;
+}
+header .dropdown:hover .dropdown-content {
+  transition: 0.3s;
+  display: block;
 }
 
 .footer {
@@ -77,8 +122,9 @@ header article .login {
   border: none;
   color: white;
   width: 200px;
-  height: 40px;
-  margin: 0 10px;
+  height: 20px;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 .footer article figure button {
   background: none;
@@ -87,6 +133,7 @@ header article .login {
   border-radius: 5%;
 }
 .footer article hr {
+  margin-top: 0;
   color: #6c6c6c;
   max-width: 200px;
 }

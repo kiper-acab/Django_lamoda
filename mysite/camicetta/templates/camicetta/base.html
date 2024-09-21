@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'camicetta/images/logo.png' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'camicetta/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     {% block links %} 
     {% endblock %}
 </head>
@@ -22,8 +23,25 @@
             </article>
         
             <article>
-                <a href="{% url 'login' %}" class="login">Вход</a>
-                <a href="{% url 'register' %}" class="auth">Регистрация</a>
+                {% if request.user.is_authenticated %}
+                    {% if basket_len != 0 %}
+                        <a href="{% url 'basket' %}" class='basket opacity'><i class="fas fa-shopping-cart"></i>Корзина <b>{{ basket_len }}</b></a>
+                    {% else %}
+                    <a href="{% url 'basket' %}" class='basket opacity'><i class="fas fa-shopping-cart"></i>Корзина</a>
+                    {% endif %}
+                    <div class="dropdown" class="opacity">
+                        <i class="fas fa-user"></i>
+                        <button class="dropbtn opacity">{{ user }}</button>
+                        <div class="dropdown-content">
+                            <a href="{% url 'profile' %}" class="opacity">Профиль</a>
+                            <a href="{% url 'settings' %}" class="opacity">Настройки</a>
+                            <a href="{% url 'logout' %}" class="opacity">Выйти из аккаунта</a>
+                        </div>
+                    </div> 
+                {% else %}
+                    <a href="{% url 'login' %}" class="login">Вход</a>
+                    <a href="{% url 'register' %}" class="auth">Регистрация</a>
+                {% endif %}
             </article>
         </header>
         {% block content %}
@@ -58,6 +76,8 @@
             </article>
         </section>
     </div>
-    
+    {% block scripts %}
+
+    {% endblock %}
 </body>
 </html>

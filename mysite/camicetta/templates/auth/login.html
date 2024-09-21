@@ -2,27 +2,30 @@
 {% load static %}
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'camicetta/css/login.css' %}">
-
+    <link rel="stylesheet" href="{% static 'camicetta/css/register.css' %}">
 {% endblock %}
 
 {% block content %}
     <section class="container">
-        
         <section class="form">
             <h1>Авторизация</h1>
             <article>
                 <form action="" method="post">
                     {% csrf_token %}
-                    <input type="text" placeholder="Введите имя пользователя" id="login" name="login">
-                    <input type="password" placeholder="Введите пароль" name="password">
+                    {% for f in form %}
+                        {{ f }}
+
+                        {% if f.errors %}
+                        <h6>{{ f.errors }}</h6>
+                        {% endif %}
+                    {% endfor %}
                     <hr>
+                
                     <button>Войти</button>
-                    <a href="{% url 'register' %}">Регистрация</a>
-                </form>
+                    <a href="{% url 'register' %}">Зарегистрироваться</a>
+                </form>   
             </article>
         </section>
     </section>
-        
 {% endblock %}
 

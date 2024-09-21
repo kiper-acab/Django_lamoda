@@ -1,0 +1,97 @@
+{% extends "camicetta/base.html" %}
+{% load static %}
+
+{% block title %} {{ title }}{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'camicetta/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <section class="profile">
+        <section class="main">
+            <article>
+                {% if user.image %}
+                <button id="myBtn"><img src="{{ request.user.image.url }}" alt=""></button>
+                {% else %}
+                <button id="myBtn"><img src="{% static 'camicetta/images/user.jpg' %}" alt=""></button>
+                {% endif %}
+            </article>
+            <article>
+                <h1>{{ request.user.username }}</h1>
+                <figure>
+                    <p>Почта: {{ request.user.email }}</p>
+                    <p>Ник: {{ request.user.username }}</p>
+                    {% if  request.user.first_name %}
+                        <p>Имя: {{ request.user.first_name }}</p>
+                    {% endif %}
+                    
+                    {% if request.user.last_name %}
+                            <p>Фамилия: {{ request.user.last_name }}</p>
+                    {% endif %}
+
+                    <p>Дата регистрации: {{ request.user.date_joined }}</p>
+                </figure>
+            </article>
+
+            <!-- Модальное окно -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                  
+                  <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <span class="close">&times;</span>
+                        {{ form }}
+                        <button type="submit">Загрузить</button>
+                  </form>
+                </div>
+              
+              </div>
+        </section>
+        <hr>
+    </section>
+    {% if orders %}
+    <h1>Текущие заказы: </h1>
+    <section class="order">
+        {% for order in orders %}
+        <article class="cards">
+            <h2>Заказ №: {{ order.pk }}</h2>
+            <p>Имя заказчика: {{ order.first_name }}</p>
+            <p>Фамилия заказчика: {{ order.last_name }}</p>
+            <p>Доставят на адресс: {{ order.address }}</p>
+            <p>Статус заказа: {{ order.get_status_display }}</p>
+        </article>
+        {% endfor %}
+    </section>
+    {% endif %}
+    
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var modal = document.getElementById("myModal");
+
+        // Получить кнопку, которая открывает модальный
+        var btn = document.getElementById("myBtn");
+
+        // Получить элемент <span>, который закрывает модальный
+        var span = document.getElementsByClassName("close")[0];
+
+        // Когда пользователь нажимает на кнопку, откройте модальный
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        // Когда пользователь нажимает на <span> (x), закройте модальное окно
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Когда пользователь щелкает в любом месте за пределами модального, закройте его
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        } 
+    </script>
+{% endblock %}

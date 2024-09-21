@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from django.urls import reverse_lazy
 from pathlib import Path
 import os
+from django.contrib import messages
 
 
 
@@ -135,5 +136,9 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'main'
 LOGIN_URL = 'login'
+
+LOGOUT_REDIRECT_URL = "/"
+
+AUTH_USER_MODEL = "camicetta.User"
